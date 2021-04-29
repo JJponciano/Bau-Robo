@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Lisa Mosis">
+    <!-- import styles -->
+    <link href="styles/viewer_stylesheet.css" rel="stylesheet">
+    <link rel="icon" href="icon/favicon.png" type="image/gif">
+    <!-- import google icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+
+
+  <body>
+    <!-- -----------------------------------Navigation------------------------------	-->
+    <div class="topnav">
+      <a style="background-color:#ddd; color:black " href="index.html">Home</a>
+      <a href="Viewer1.html">Viewer1</a>
+      <a href="Viewer2.html">Viewer2</a>
+      <a href="Impressum.html"><i class="material-icons">info_outline</i></a>
+    </div>
+    <!-- -------------------Bearbeitung (Side links)--------------------------------	-->
+    <div class="row">
+
+    <!-- --------------------------------Main Bereich---------------------------------	-->
+      <div class="column dir">
+        <h2>Directories</h2>
+        <table style="width: 100%">
+          <tr><td>
+            <label id="showDirectory" style="float:left;">data/</label>
+            <button type="button" id="dirBack" style="float:right"><i class="material-icons">subdirectory_arrow_left</i></button>
+            <button type="button" id="getDirectories" style="float:right"><i class="material-icons">refresh</i></button>
+          </td></tr>
+          <tr style="background-color: #d0d0d0;"><td>
+            <div id="directoryDisplay">
+            </div>
+            <div id="fileDisplay" style="white-space: pre; margin: 0.5vh;"></div>
+          </td></tr>
+        </table>
+      </div>
+    <!-- -----------------------------------Footer------------------------------------	-->
+      <div class="footer">
+      </div>
+    </div>
+
+  </body>
+
+
+<!-- -----------------------------------Script, Events-------------------------------	-->
+  <script>
+    var url = "http://localhost:8080";
+    var currentPath = "";
+
+    //Events changeDirectory
+    document.querySelector('#dirBack').addEventListener('click', changeDirectory);
+    document.querySelector('#getDirectories').addEventListener('click', getDirectory);
+
+    //onLoad
+    document.addEventListener("DOMContentLoaded", function() {
+      getDirectory();
+      updateShowDirectory(currentPath);
+    });
+
+    //gets all the files and directories in the current directory from the server
+    //and displays the files as text and the directories as buttons.
+    function getDirectory () {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var files = "";
+          //clear the old files in cse there aren't any in this path
+          document.querySelector("#fileDisplay").textContent = files;
+          var directories = [];
+          var textArray = this.responseText.split("\",\"");
+          textArray.forEach(element => {
+            //because its ["..."] and i dont want
+            //those at the beginning of the first or the end of the last element
+            element = element.replace('"]','');
+            element = element.replace('["','');
+            const stringParts = element.split(" ");
+            //find out if its file or directory
+            if(stringParts[0]=="File"){
+              files = files + stringParts[1] + "\n";
+            }
+            if(stringParts[0]=="Directory"){
+              directories.push(stringParts[1]);
+            }
+          })
+          //display files as text
+          document.querySelector("#fileDisplay").textContent = files;
+          //clear all directory buttons
+          while (document.querySelector('#directoryDisplay').firstChild) {
+            document.querySelector('#directoryDisplay').removeChild(document.querySelector('#directoryDisplay').lastChild);
+          }
+          //create new buttons for every directory
+          directories.forEach(dir => {
+            var newDir = document.createElement("BUTTON");
+            var nextLine = document.createElement("br"); //each in a new line
+            newDir.innerHTML = dir;
+            //with a function on click
+            newDir.onclick = function () {
+              changeDirectory(dir);
+              updateShowDirectory(currentPath);
+            }
+            //and add them to the div
+            document.querySelector('#directoryDisplay').appendChild(newDir);
+            document.querySelector('#directoryDisplay').appendChild(nextLine);
+          })
+        }
+      };
+      xhttp.open("GET", url + "/objectInventory", true);
+      xhttp.send();
+    }
+
+    //changes the current directory if one is chosen (via button)
+    function changeDirectory(path) {
+      var filepath = "";
+      //if the "back button was used --> one directory up
+      if(typeof(path) === "object") {
+        var pathParts = currentPath.split("/");
+        if(pathParts.length>=2) {
+          for (var i = 0; i < pathParts.length - 1; i++) {
+            if(i>0)
+              filepath += "/";
+            filepath += pathParts[i];
+          }
+        }
+        else
+          filepath = "\"\"";
+      }
+      //if the currnt path isn't the base path (we have to send the full path starting at the base path "data/")
+      else if (currentPath != ""){
+        filepath = currentPath + "/" + path;
+      }
+      //if its just the first folder seen from the base path
+      else
+        filepath = path;
+      //make a REST request
+      var xhttp = new XMLHttpRequest();
+      var params = filepath;
+      xhttp.open('PUT', url + "/changeFilepath", true);
+      xhttp.onreadystatechange = function() {//Call a function when the state changes.
+        //after we got an answer
+        if(xhttp.readyState == 4 && xhttp.status == 200) {
+          //if it worked update everything
+          if(this.responseText == true || this.responseText == "true"){
+            getDirectory();
+            currentPath = filepath;
+            updateShowDirectory(filepath);
+            if(currentPath == "\"\"")
+              currentPath = "";
+          }
+        }
+      }
+      xhttp.send(params);
+    }
+
+    function updateShowDirectory(filepath){
+      if(filepath != "\"\"" && filepath != "")
+        document.querySelector("#showDirectory").textContent = "data/" + filepath;
+      else
+        document.querySelector("#showDirectory").textContent = "data/";
+    }
+  </script>
+</html>
