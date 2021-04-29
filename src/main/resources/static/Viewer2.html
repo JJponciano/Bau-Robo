@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Viewer2</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Lisa Mosis">
+    <!-- import styles -->
+    <link href="styles/viewer_stylesheet.css" rel="stylesheet">
+    <link rel="icon" href="icon/favicon.png" type="image/gif">
+    <!-- import google icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <body>
+    <!-- -----------------------------------Navigation------------------------------	-->
+    <div class="topnav">
+      <a href="index.html">Home</a>
+      <a href="Viewer1.html">Viewer1</a>
+      <a style="background-color:#ddd; color:black;" href="Viewer2.html">Viewer2</a>
+      <a href="Impressum.html"><i class="material-icons">info_outline</i></a>
+      <a id="undoButton" style="float:right"><i class="material-icons">undo</i></a>
+    </div>
+    <!-- -------------------Bearbeitung (Side links)--------------------------------	-->
+    <div class="row">
+      <div class="column sideL">
+        <table style="width:100%;">
+          <tr>
+            <td>
+              <br>
+              <label for="navigation">Navigation </label>
+              <input type="checkbox" id="navigation" name="navigation" value="nav" style="width: auto;" checked>
+            </td>
+            <tr>
+              <td><button type="button" id="setCam">Kamera zur&uuml;cksetzen</button></td>
+            </tr>
+            <tr>
+              <td>
+                <br>
+                <label id="objInfo" style="color:grey">W&auml;hle ein Objekt...</label>
+              </td>
+          <tr>
+            <td>
+              <br>
+              <label for="myColor" id="color">Farbe: </label>
+              <input type="color" id="myColor">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="sanding">Schleif-grid: </label>
+              <select id="sanding">
+                <option value="0">0</option>
+                <option value="25">25</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <button type="button" id="cancelChangedObject" style="width: 48%; height:3.5vh;">Abbrechen</button>
+              <button type="button" id="saveChangedObject" style="width: 50%; font-size:2.4vh; height:3.5vh; float: right;"><i class="fa fa-save"></i></button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    <!-- --------------------------------Viewer Fenster-----------------------------	-->
+      <div class="column middle">
+        <div id="my-gui-container"></div>
+        <div id="myCanvas" style="width:100%; height:100%;" ></div>
+        <script type="module" src="viewer/viewer2Controls.js"></script>
+      </div>
+    </div>
+    <!-- -----------------------------------Footer------------------------------------	-->
+    <div class="footer">
+      <p style="color: #333333; font-size: 1.5vh; margin-top: 1%; margin-bottom: 1%; padding: 0;" id="status">Status...</p>
+    </div>
+  </body>
+
+  <!-- -----------------------------------Script, Events-------------------------------	-->
+  <script type="module">
+    /**
+     * @author Rebekka Lange
+     */
+
+    // import variables and functions
+    import * as VC from "./viewer/viewer2Controls.js";
+
+    // click events
+
+    // navigation
+    document.querySelector('#navigation').addEventListener('click', function(){
+      VC.changeNavigation(document.querySelector("#navigation").checked);
+    });
+    document.querySelector('#setCam').addEventListener('click', function(){
+      VC.resetCamera();
+    });
+
+    // undo
+    document.querySelector('#undoButton').addEventListener('click', function(){
+      VC.undo();
+    });
+
+    // new color
+    document.querySelector('#myColor').addEventListener('change', function(){
+      if(VC._clicked){
+        let log = (['newColor', VC._clicked.name, VC._clicked.userData[1]]);
+        VC.logAction(log);
+        VC.setColor(VC._clicked, document.querySelector('#myColor').value);
+      }
+    });
+
+    // new sanding
+    document.querySelector('#sanding').addEventListener('input', function(){
+      if(VC._clicked){
+        let log = (['newSanding', VC._clicked.name, VC._clicked.userData[2]]);
+        VC.logAction(log);
+        VC.setSanding(VC._clicked, document.querySelector("#sanding").value);
+      }
+    });
+
+    // save changes
+    document.querySelector('#saveChangedObject').addEventListener('click', function(){
+      VC.makePersistent();
+    });
+
+    // cancel changes
+    document.querySelector('#cancelChangedObject').addEventListener('click', function(){
+      VC.cancelChanges();
+    });
+
+  </script>
+
+</html>
