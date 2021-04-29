@@ -1,0 +1,150 @@
+
+/**
+ * @author Lisa Mosis
+ */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Calibri", serif;
+    font-size: 2vh;
+}
+
+label{
+    margin: 0.3vh 0;
+}
+
+button{
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 2vh;
+    margin-top: 1vh;
+    font-family: "Calibri", serif;
+}
+
+input{
+    font-size: 2vh;
+    font-family: "Calibri", serif;
+    float:right;
+    width:50%;
+}
+
+select{
+    width:50%;
+    float:right;
+    font-size: 1.8vh;
+}
+
+/* Style the top navigation bar */
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+    height: 8vh;
+}
+
+/* Style the topnav links */
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding-left: 3vh;
+    padding-right: 3vh;
+    text-decoration: none;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 2.4vh;
+    font-family: "Calibri", serif;
+    font-weight: bold;
+}
+
+/* Change color on hover */
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+/* Create three unequal columns that floats next to each other */
+.column {
+    float: left;
+    padding-left: 0; /*evtl padding im Text statt im div*/
+    padding-right: 0;
+    height: 87vh;
+}
+
+/* Left column (Optionen)*/
+.column.sideL {
+    background-color: white;
+    width: 15%;
+    overflow: auto;
+}
+
+/* Middle column */
+.column.middle {
+    overflow: hidden;
+    width: 85%;
+    float: right;
+    text-align: center;
+}
+
+/* Directories column */
+.column.dir {
+    overflow: hidden;
+    width: 30vw;
+    float: left;
+    padding: 3vh;
+    background-color: #f0f0f0;
+}
+
+.column.dir button {
+    font-size: inherit;
+    margin: 0.5vh;
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+
+}
+
+/* Style the footer */
+.footer {
+    position: absolute;
+    bottom: 0;
+    clear: both;
+    background-color: #ddd;
+    text-align: center;
+    height: 5vh;
+    width: 100%;
+}
+
+/*three*/
+#myCanvas {
+    background: white;
+}
+
+.camera-pivot-marker {
+    color: #ffffff;
+    position: absolute;
+    width: 2.5vh;
+    height: 2.5vh;
+    border-radius: 1.5vh;
+    border: 0.2vh solid #ebebeb;
+    background: black;
+    visibility: hidden;
+    box-shadow: 0.5vh 0.5vh 1.5vh 0.1vh #000000;
+    z-index: 10000;
+    pointer-events: none;
+}
+
+#my-gui-container {
+    position: absolute;
+    z-index: 10;
+}
+
