@@ -103,3 +103,38 @@ List of objects to recognize in the point clouds:
 - Air conditioner
 - Heat pump outlet.
 - Valve
+
+## Segmentation strategy
+
+Relevant DL approaches:
+- Ni, H.; Lin, X.; Zhang, J.; Ni, H.; Lin, X.; Zhang, J. Classification of ALS Point Cloud with Improved Point Cloud Segmentation and Random Forests. Remote Sens. 2017, 9, 288.
+
+- Ghorpade, V.K.; Checchin, P.; Malaterre, L.; Trassoudaine, L. 3D shape representation with spatial probabilistic distribution of intrinsic shape keypoints. EURASIP J. Adv. Signal Process.
+2017, 2017, 52.
+
+- Bueno, M.; Martínez-Śanchez, J.; Gonźalez-Jorge, H.; Lorenzo, H. Detection of geometric
+keypoints and its application to point cloud coarse registration. In Proceedings of the International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences - ISPRS Archives; ISPRS: Prague, Czech Republic, 2016; Vol. 41, pp. 187–194.
+
+- Vetrivel, A.; Gerke, M.; Kerle, N.; Nex, F.; Vosselman, G. Disaster damage detection through synergistic use of deep learning and 3D point cloud features derived from very high resolution oblique aerial images, and multiple-kernel-learning. ISPRS J. Photogramm. Remote Sens. 2018, 140, 45–59.
+
+- Shen, Y.; Feng, C.; Yang, Y.; Tian, D. Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling. In Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR); Salt Lake City, United States, 2018; pp. 4548–4557.
+
+- Qi, C.R.; Su, H.; Mo, K.; Guibas, L.J. PointNet: Deep learning on point sets for 3D classification and segmentation. In Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR); Honolulu, Hawaii, United States, 2017; pp. 77–85.
+
+- Nurunnabi, A.; Belton, D.; West, G. Robust Segmentation for Large Volumes of Laser Scanning Three-Dimensional Point Cloud Data. IEEE Trans. Geosci. Remote Sens. 2016, 54, 4790–4805.
+
+- Lawin, F.J.; Danelljan, M.; Tosteberg, P.; Bhat, G.; Khan, F.S.; Felsberg, M. Deep projective 3D semantic segmentation. In Proceedings of the Computer Analysis of Images and Patterns (CAIP); Ystad, Sweden, 2017; pp. 95–107.
+
+- Shen, Y.; Feng, C.; Yang, Y.; Tian, D. Mining Point Cloud Local Structures by Kernel Correlation and Graph Pooling. In Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR); Salt Lake City, United States, 2018; pp. 4548–4557.
+
+- Qi, C.R.; Su, H.; Mo, K.; Guibas, L.J. PointNet: Deep learning on point sets for 3D classification and segmentation. In Proceedings of the Conference on Computer Vision and Pattern Recognition (CVPR); Honolulu, Hawaii, United States, 2017; pp. 77–85.
+
+- Nurunnabi, A.; Belton, D.; West, G. Robust Segmentation for Large Volumes of Laser Scanning Three-Dimensional Point Cloud Data. IEEE Trans. Geosci. Remote Sens. 2016, 54, 4790–4805.
+
+- Lawin, F.J.; Danelljan, M.; Tosteberg, P.; Bhat, G.; Khan, F.S.; Felsberg, M. Deep projective 3D semantic segmentation. In Proceedings of the Computer Analysis of Images and Patterns (CAIP); Ystad, Sweden, 2017; pp. 95–107.
+
+### Most accurrate methods for planar object: 
+
+Voxel-Based 3D Point Cloud Semantic Segmentation: Unsupervised Geometric and Relationship Featuring
+
+* Poux, Florent & Billen, Roland. (2019). Voxel-Based 3D Point Cloud Semantic Segmentation: Unsupervised Geometric and Relationship Featuring vs Deep Learning Methods. ISPRS International Journal of Geo-Information. 8. 213. 10.3390/ijgi8050213. 
