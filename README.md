@@ -1,4 +1,9 @@
 # Bau-Robo
+## Geometric categories
+- regular
+    - Planar
+    - Cylindrical
+- irregular
 
 List of objects to recognize in the point clouds:
 -  Floor
