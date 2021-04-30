@@ -15,6 +15,9 @@ List of objects to recognize in the point clouds:
 -  Stairs
 -  Table
 -  Wall
+  - Plywood wall.
+  - Concrete wall.
+  - Plasterboard wall.
 -  Window
 -  Noise
 - Window frame
