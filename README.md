@@ -16,7 +16,7 @@ List of objects to recognize in the point clouds:
 -  Table
 -  Wall
 -  Window
--  Noisee
+-  Noise
 - Window frame
 - Door frame
 - cable
