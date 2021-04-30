@@ -20,13 +20,15 @@ List of objects to recognize in the point clouds:
     - Plasterboard wall.
 -  Window
 -  Noise
+        - Cuts in the walls
+        - Junction between two plates  
 - Window frame
 - Door frame
-- cable
+- Cable
 - Power socket
 - Light fixture
-- door handle
-- window handle
+- WDoor handle
+- Window handle
 - Radiator
 - Bathroom furniture
   - Washbasin
