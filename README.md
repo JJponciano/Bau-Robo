@@ -25,8 +25,8 @@ List of objects to recognize in the point clouds:
     - Plasterboard wall.
 -  Window
 -  Noise
-        - Cuts in the walls
-        - Junction between two plates  
+    -  Cuts in the walls
+    -  Junction between two plates  
 - Window frame
 - Door frame
 - Cable
