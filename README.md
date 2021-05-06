@@ -44,9 +44,11 @@ Feature extraction:
 - GetVolume : characterizes the volume of a segment.
 - GetArea : characterizes the area of a segment.
 - GetLocation : characterizes the location of a segment.
-- GetPointCount : characterizes the point number of a point cloud. GetMeanColor : characterizes the mean color of a segment. 
+- GetPointCount : characterizes the point number of a point cloud. 
+- GetMeanColor : characterizes the mean color of a segment. 
 - GetMeanNormal : characterizes the mean normal of a segment. 
-- GetResolution : characterizes the resolution of a point cloud. GetDistance : characterizes the euclidean distance between two segments.
+- GetResolution : characterizes the resolution of a point cloud. 
+- GetDistance : characterizes the euclidean distance between two segments.
 
 ## Object 
 
