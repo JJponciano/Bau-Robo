@@ -37,19 +37,22 @@ Segmentation Algorithm:
 - RANSAC
 
 Feature extraction:
-
 - GetHeight : characterizes the height of a segment.
 - GetWidth : characterizes the width of a segment.
 - GetLength : characterizes the length of a segment.
 - GetVolume : characterizes the volume of a segment.
 - GetArea : characterizes the area of a segment.
 - GetLocation : characterizes the location of a segment.
-- GetPointCount : characterizes the point number of a point cloud. 
-- GetMeanColor : characterizes the mean color of a segment. 
-- GetMeanNormal : characterizes the mean normal of a segment. 
-- GetResolution : characterizes the resolution of a point cloud. 
+- GetMeanNormal : characterizes the mean normal of a segment.
+- GetPointCount : characterizes the point number of a point cloud.
+- GetMeanColor : characterizes the mean color of a segment.
+- GetResolution : characterizes the resolution of a point cloud.
 - GetDistance : characterizes the euclidean distance between two segments.
-
+- GetAltitude : characterizes the altitude of a point cloud.
+- GetDistance : characterizes the euclidean distance between two segments.
+- isParallele: characterizes the parallelisms of two segments
+- isBetween: characterizes a segments for which its position is between two other segments.
+- isAligned: characterize a segments align with other segments.
 ## Object 
 
 Geometric categories:
