@@ -1,22 +1,23 @@
 # Bau-Robo
 
-## Scanner
+## 3D data acquisition (Scanner 3D)
 
-Relevant for small non planar object:
-- Leica RTC 360
+Relevant as stand alone Device:
+- Terrestrial laser scanner
+    - Leica RTC 360 - 40000€ (Ideal device)
+    - Leica BLK 360 - 16000€ (cost-efficient device)
+    - other potenzial terrestrial laserscanner?
+        -  Timms ( large amounts of rooms)
 
-Relevant for planar object (chauir, table, windows, dors, furniture):
-- ipad
-
-
-Only for Big planar object (wall, celling, ground)
-- L515 ss
-- Timms
+Maybe relevant on combination with a robot:
+- Time of flight / Lidar camera (Tof/lidar)
+    -  L515 ss
+    -  other Tof
 
 Not relevant:
 - Go pro  with Meshroom
-- Faro
 - iphone
+- ipad
 
 
 ## Algorithms
